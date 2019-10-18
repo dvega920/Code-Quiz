@@ -18,6 +18,8 @@ FUNCTIONALITY
 - 
 
 */
+$(document).ready(function(){
+    
 
 var timer = $('.timer-color');
 var p = $('.card-text');
@@ -60,4 +62,5 @@ btn.on('click', function () {
         $(".card-title").text('Question: 1');
         p.text("Commonly used data types DO NOT include:");
     }
+})
 });
