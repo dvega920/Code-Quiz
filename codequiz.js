@@ -1,30 +1,9 @@
-/* PSEUDO CODE 
-
-DISPLAY (use Bootstrap)
-
-- <a> to view high scores at the top left of screen
-- timer at top right of screen
-- h1 for page title "Coding Quiz"
-- p tag for game description
-- button to start quiz
-- h1 for questions
-- unordered list of buttons for choices
-- text box to enter initials
-- submit button to submit initials
-
-FUNCTIONALITY
-
-- create highScores variable to store...high scores
-- 
-
-*/
 $(document).ready(function(){
     
-
 var timer = $('.timer-color');
 var p = $('.card-text');
 var btn = $('.btn');
-var count = 5 //seconds;
+var count = 75; //seconds
 var stopTimer = 0;
 
 var questions = [
@@ -40,6 +19,7 @@ var questions = [
     },
 ];
 
+//function to stop and clear timer
 function stopFunction(x) {
     clearInterval(x);
 }
@@ -59,8 +39,14 @@ btn.on('click', function () {
                 stopFunction(myCounter);
             }
         }, 1000)
+        
+        //Sets the first question and series of options
         $(".card-title").text('Question: 1');
         p.text("Commonly used data types DO NOT include:");
+        
+        //Need to create an element to store the choices
+        $(".submit").text('Submit');
+
     }
 })
 });
