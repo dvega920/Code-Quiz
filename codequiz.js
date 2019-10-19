@@ -24,6 +24,14 @@ function stopFunction(x) {
     clearInterval(x);
 }
 
+function choicesLoop(x){
+    var choices = questions[x].choices;
+    console.log($("<div>").text(""));
+    console.log($("<a>").text(choices));
+}
+
+choicesLoop(0);
+
 p.text("Quiz objective is to answer as many questions correctly, if incorrect answers is selected timer will decrement 5 seconds");
 
 //event listener to start timer and quiz
@@ -43,10 +51,11 @@ btn.on('click', function () {
         //Sets the first question and series of options
         $(".card-title").text('Question: 1');
         p.text("Commonly used data types DO NOT include:");
-        
-        //Need to create an element to store the choices
+    
+        // $("<div>").text(questions[0].choices);
+    //changes the "start quiz" button to "submit" when event starts"
         $(".submit").text('Submit');
-
+    
     }
 })
 });
