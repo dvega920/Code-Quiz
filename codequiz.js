@@ -19,23 +19,29 @@ var questions = [
     },
 ];
 
+// console.log(questions[0].choices);
+
 //function to stop and clear timer
 function stopFunction(x) {
     clearInterval(x);
 }
 
-function choicesLoop(x){
-    var choices = questions[x].choices;
-    console.log($("<div>").text(""));
-    console.log($("<a>").text(choices));
+//function to create a new element
+function createEl(el) {
+    var newEl = $(el);
+    newEl.text("");
+    $(".card-body").append(el);
 }
-
-choicesLoop(0);
 
 p.text("Quiz objective is to answer as many questions correctly, if incorrect answers is selected timer will decrement 5 seconds");
 
+
+// console.log(questions[0].choices.length);
+
+
 //event listener to start timer and quiz
-btn.on('click', function () {
+
+btn.click(function () {
 
     if (count >= stopTimer) {
         var myCounter = setInterval(function () {
@@ -48,14 +54,30 @@ btn.on('click', function () {
             }
         }, 1000)
         
+        //removes unwanted elements
+        $("h5").remove();
+        $(".card-text").remove();
+        $(".submit").remove();
+        
         //Sets the first question and series of options
-        $(".card-title").text('Question: 1');
-        p.text("Commonly used data types DO NOT include:");
-    
-        // $("<div>").text(questions[0].choices);
-    //changes the "start quiz" button to "submit" when event starts"
-        $(".submit").text('Submit');
-    
+        $(".card-header h1").text("Question 1:");
+        createEl("<h2>");
+        $("h2").addClass("questions-title");
+        $(".questions-title").text(questions[0].title);
+
+        
+        //Loop to iterate through choices for questions array at index 0
+        for (var i = 0; i < questions[0].choices.length; i++) {
+            // console.log(questions[0].choices.length);
+            createEl("<a href=\"\#\" class=" + "choice-" + i + ">");
+            $('a').addClass("btn btn-primary choicesProp")
+            // console.log(questions[0].choices[i]);
+            $(".choice-" + i).text(questions[0].choices[i]);
+            createEl("<br>");
+            $(".choice-" + i).append("<br>");
+        }
+
+
     }
 })
 });
